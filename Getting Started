@@ -1,0 +1,20 @@
+>Why Do we need CLI 
+
+1)Efficency 
+2)Infrastructure Automation
+
+Commands
+man
+wget 
+info wget examples simple
+wget --help
+less .bashrc
+ls -a 
+ls -l 
+ip address or ip a 
+cd change directory
+touch creates a file with name 
+    touch "this is a new file "
+    touch this\ is \a \new \file
+
+
