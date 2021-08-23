@@ -122,3 +122,87 @@ vagrant@vagrant-ubuntu-trusty-64:~$ cd tut
 vagrant@vagrant-ubuntu-trusty-64:~$
 
 
+
+
+**A bit of Plumbing**
+
+ls shows the list of files in current directory 
+wc shows the word count
+wc -l shows the number of lines in the text
+wc  can also be used to count the files and folders in a dir by using the ls ~ | wc -l   ** here we are using "|" to store the values to Pipe | in the memory and then pass it wc -l
+
+vagrant@vagrant-ubuntu-trusty-64:~$ clear
+vagrant@vagrant-ubuntu-trusty-64:~$ ls
+File  FILE  file1
+vagrant@vagrant-ubuntu-trusty-64:~$ echo "this text has three words" >File.txt
+vagrant@vagrant-ubuntu-trusty-64:~$ pwd
+/home/vagrant
+vagrant@vagrant-ubuntu-trusty-64:~$ ls
+File  FILE  file1  File.txt
+vagrant@vagrant-ubuntu-trusty-64:~$ wc File.txt
+ 1  5 26 File.txt
+vagrant@vagrant-ubuntu-trusty-64:~$ wc -l File.txt
+1 File.txt
+vagrant@vagrant-ubuntu-trusty-64:~$ less File.txt
+vagrant@vagrant-ubuntu-trusty-64:~$ pwd
+/home/vagrant
+vagrant@vagrant-ubuntu-trusty-64:~$ ls ~ > file_list.txt
+vagrant@vagrant-ubuntu-trusty-64:~$ wc -l file_list.txt
+5 file_list.txt
+vagrant@vagrant-ubuntu-trusty-64:~$ ls ~ | wc -l
+5
+
+and wc -w for counting words 
+
+vagrant@vagrant-ubuntu-trusty-64:~$ clear
+vagrant@vagrant-ubuntu-trusty-64:~$ ls
+File  FILE  file1  file_list.txt  File.txt
+vagrant@vagrant-ubuntu-trusty-64:~$ cat File.txt
+this text has three words
+vagrant@vagrant-ubuntu-trusty-64:~$ wc -w File.txt
+5 File.txt
+
+# this time for telling us how many items are in the /etc directory:
+
+ls /etc|wc -l
+
+vagrant@vagrant-ubuntu-trusty-64:~$ ls /etc|wc -l
+189
+
+
+## Unix has a command, uniq, that will only output unique lines in the file. So we need to cat the file out and pipe it through uniq
+
+cat combined.txt | uniq | wc -l
+
+
+vagrant@vagrant-ubuntu-trusty-64:~/combined.txt$ man uniq
+vagrant@vagrant-ubuntu-trusty-64:~/combined.txt$ clear
+vagrant@vagrant-ubuntu-trusty-64:~/combined.txt$ cat combined1.txt | uniq
+two girls have two cars in three cities
+two girls have two cars in two cities
+two girls have two cars in four cities
+vagrant@vagrant-ubuntu-trusty-64:~/combined.txt$ cat combined1.txt | uniq | wc -l
+3
+vagrant@vagrant-ubuntu-trusty-64:~/combined.txt$ cat combined1.txt
+two girls have two cars in three cities
+two girls have two cars in three cities
+two girls have two cars in two cities
+two girls have two cars in two cities
+two girls have two cars in four cities
+vagrant@vagrant-ubuntu-trusty-64:~/combined.txt$
+
+
+## sort command arraanges alphabetically 
+
+sort combined.txt | uniq | wc -l
+
+
+
+
+
+
+
+
+
+
+
