@@ -1,0 +1,95 @@
+Command : defination or meaning
+pwd : print working directory 
+cd  : Current Directory 
+cd .. :cd space .. is used to exit the current directory 
+whoami : command will show you your USERNAME
+cd~ :Using the tilde character (”~”) at the start of your path similarly means “starting from my home directory”.
+touch will create the files
+Ls : shows the list of Items in present directory 
+mkdir /tmp/tutorial : This MKDIR created a directory /tmp/tutorial
+mkdir -p parentFilename/childfilename/Childfilename : mkdir -p creates nested directory
+Example 
+mkdir :
+mkdir "folder 1"    : create a folder with naame folder 1
+mkdir 'folder 2'    : create a folder with naame folder 2
+mkdir folder\ 3     : create a folder with naame folder 3
+mkdir "folder 4" "folder 5" : create two folders with names "folder 4" "folder 5"
+mkdir -p "folder 6"/"folder 7" : create a nested folder of folder 6 and inside that folder 7
+ls
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Echo and Cat 
+
+echo writes the sentence and prints it 
+cat reads it 
+echo just prints its arguments back out again (hence the name). But combine it with a redirect, and you’ve got a way to easily create small test files:
+
+echo "This is a test" > test_1.txt
+echo "This is a second test" > test_2.txt
+echo "This is a third test" > test_3.txt
+ls
+You should cat each of these files to check their contents. But cat is more than just a file viewer - its name comes from ‘concatenate’, meaning “to link together”. If you pass more than one filename to cat it will output each of them, one after the other, as a single block of text:
+
+cat test_1.txt test_2.txt test_3.txt
+
+vagrant@vagrant-ubuntu-trusty-64:~/tut/tutorial/D4/D5$ echo "This is some text" > test1.txt   
+vagrant@vagrant-ubuntu-trusty-64:~/tut/tutorial/D4/D5$ ls
+current  current.txt  D6  folder 3  outlook.txt  output  test1.txt
+vagrant@vagrant-ubuntu-trusty-64:~/tut/tutorial/D4/D5$ cat test1.txt
+This is some text
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Cat stands for concatenation too
+
+vagrant@vagrant-ubuntu-trusty-64:~/tut/tutorial/D4/D5$ echo "This is some text" > test1.txt
+vagrant@vagrant-ubuntu-trusty-64:~/tut/tutorial/D4/D5$ ls
+current  current.txt  D6  folder 3  outlook.txt  output  test1.txt
+vagrant@vagrant-ubuntu-trusty-64:~/tut/tutorial/D4/D5$ cat test1.txxt
+cat: test1.txxt: No such file or directory
+vagrant@vagrant-ubuntu-trusty-64:~/tut/tutorial/D4/D5$ cat test1.txt
+This is some text
+vagrant@vagrant-ubuntu-trusty-64:~/tut/tutorial/D4/D5$ echo "for testing purposes" > test2.txt
+vagrant@vagrant-ubuntu-trusty-64:~/tut/tutorial/D4/D5$ ls
+current  current.txt  D6  folder 3  outlook.txt  output  test1.txt  test2.txt
+vagrant@vagrant-ubuntu-trusty-64:~/tut/tutorial/D4/D5$ cat t* > combined.txt
+vagrant@vagrant-ubuntu-trusty-64:~/tut/tutorial/D4/D5$ cat combined.txt
+This is some text
+for testing purposes
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ less  : is used to see the whole page for the text file 
+ exaample:
+ 
+ less combined.txt
+ 
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ 
+ move command -
+ 
+ mv firstto second
+ 
+ vagrant@vagrant-ubuntu-trusty-64:~/tut/tutorial/D4/D5$ mv combined.txt D6     {combined.txt is moved to folder D6}
+vagrant@vagrant-ubuntu-trusty-64:~/tut/tutorial/D4/D5$ ls
+current  current.txt  D6  folder 3  outlook.txt  output  test1.txt  test2.txt
+vagrant@vagrant-ubuntu-trusty-64:~/tut/tutorial/D4/D5$ cd D6
+vagrant@vagrant-ubuntu-trusty-64:~/tut/tutorial/D4/D5/D6$ ls
+
+2) mv command can also move multiple documents to the last folder 
+mv combined.txt test_* dir3 dir2                                      **dir2 is the folder to which the combined.txt test_* dir3 is moved**
+ls
+ls dir2
+
+3)mv command caan move from dir2 to dir4
+mv dir2/combined.txt dir4/dir5/dir6
+ls dir2
+ls dir4/dir5/dir6
+
+4)cp command copied the files 
+
+cp dir4/dir5/dir6/combined.txt .
+ls dir4/dir5/dir6
+ls
+
+
+
