@@ -91,5 +91,34 @@ cp dir4/dir5/dir6/combined.txt .
 ls dir4/dir5/dir6
 ls
 
+5) rm and rmdir 
+
+rm filename
+rmdir :to remove directory 
+rmdir -p 
+rm -r 
+
+vagrant@vagrant-ubuntu-trusty-64:~/tut/tutorial/D4/D5/D6/File$ cd
+vagrant@vagrant-ubuntu-trusty-64:~$ rm tut
+rm: cannot remove ‘tut’: Is a directory
+vagrant@vagrant-ubuntu-trusty-64:~$ rmdir tut
+rmdir: failed to remove ‘tut’: Directory not empty
+vagrant@vagrant-ubuntu-trusty-64:~$ rmdir -p
+rmdir: missing operand
+Try 'rmdir --help' for more information.
+vagrant@vagrant-ubuntu-trusty-64:~$ rmdir -p tut
+rmdir: failed to remove ‘tut’: Directory not empty
+vagrant@vagrant-ubuntu-trusty-64:~$ rm -r tut                                                    **rm -r dir name will delete everything -r staands for recursive remove**
+vagrant@vagrant-ubuntu-trusty-64:~$ ls tut
+ls: cannot access tut: No such file or directory
+vagrant@vagrant-ubuntu-trusty-64:~$ ls
+File  FILE  file1
+vagrant@vagrant-ubuntu-trusty-64:~$ pwd
+/home/vagrant
+vagrant@vagrant-ubuntu-trusty-64:~$ ls
+File  FILE  file1
+vagrant@vagrant-ubuntu-trusty-64:~$ cd tut
+-bash: cd: tut: No such file or directory
+vagrant@vagrant-ubuntu-trusty-64:~$
 
 
