@@ -1,0 +1,34 @@
+### Sud AND Root user 
+
+Sudo 
+
+1)sudo -i : login as root user 
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo -i
+root@vagrant-ubuntu-trusty-64:~#
+root@vagrant-ubuntu-trusty-64:~# pwd
+/root
+
+2)exit : logout as root user to the previous directory 
+root@vagrant-ubuntu-trusty-64:~# exit
+logout
+vagrant@vagrant-ubuntu-trusty-64:~$
+
+3)vagrant@vagrant-ubuntu-trusty-64:~$ sudo -i
+root@vagrant-ubuntu-trusty-64:~# cat /etc/shadow
+
+with root user you can open the privelegaed files 
+
+
+Hidden file 
+
+There’s nothing special about a hidden file or folder, other than it’s name: simply starting a name with a dot (”.”) is enough to make it disappear.
+
+combined.txt  echo  File  FILE  file1  file_list.txt  File.txt  two people have two cars in two appartments
+vagrant@vagrant-ubuntu-trusty-64:~$ .file_list.txt
+.file_list.txt: command not found
+vagrant@vagrant-ubuntu-trusty-64:~$ mv file_list.txt .file_list.txt
+vagrant@vagrant-ubuntu-trusty-64:~$ ls
+combined.txt  echo  File  FILE  file1  File.txt  two people have two cars in two appartments
+
+
+
