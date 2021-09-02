@@ -1,0 +1,37 @@
+Revision with examples
+
+Create a new file jupiter and write to it as "Jupiter is a planet"
+Change file permission of eliane to remove read access from everyone
+Change file permission of newman to add write permissions to only group
+Become root and cd into your home directory.  Then create 2 new files superman and zad in superman directory
+Change ownership of zad file from root to your username
+Change group ownership of zad from root to your username
+Create a new file in your home directory supergirl and then move supergirl file to /tmp directory
+Remove supergirl file from /tmp directory
+Go back to superman directory in your home directory and add this line to zad file "zad is a bad character in superman movie"
+Then go seinfeld directory and create a new file seinfeld.  
+Add 5 seinfeld characters name in seinfeld file.  Jerry Seinfeld, George Gustanza, Eliane Benis, Cosmo Kramer, and David Puddy
+Do cat /var/log/dmesg and output to a file called dmesg-new in your home directory
+Read the dmesg-new file with cat, more and less commands and practice
+View the first 10 lines of dmesg-new file and output to a file name dmesg-h10
+View the last 20 lines of dmesg-new file and output to a file name dmesg-t20
+Go to seinfeld directory and create a new directory "seinfeld-characters"
+Add text to seinfeld-character file using echo command.  Each character should be in one line, "Jerry Seinfeld, Cosmo Kramer, Eliane Benes, George Costanza, Newman Mailman, Frank Costanza, Estelle Costanza, Morty Seinfeld, Helen Seinfeld, Babes Kramer, Alton Benes, J Peterman, George Steinbrenner, Uncle Leo, David Puddy, Justin Pit and Kenny Bania"
+Use cut command to cut the first 4 letters from seinfeld-characters and output to a different file name (name = filters-files)
+Use awk command to get only the 2nd column of seinfeld-characters and output to the filters-files without removing any other text from it
+Use grep command to only grep seinfeld and output to a new file call it seinfeld-family
+Use sort command, uniq and wc command to practice whichever way you like by creating new files or working with existing files 
+Go to your home directory and then go to superman directory. Create a new file called "first4movies" using vi command
+Write anything you know about all first 4 movies of superman.  If you never watched superman then you can enter at least 20 names of your family members.  This file should have 20 lines and each line should have 5-6 words
+Practice vi command by navigating the file content and remove some lines, edit or undo
+Run last command and find out the number of users logged in.  (Do not count duplicate users)
+Run id command on africa and australia users to verify their user id
+Change the date of your system to Aug 22 1998 at 1pm and verify
+Check system uptime
+List 1999 calendar 
+Become yourself "your username" and run df -h command.  Output the df -h command to another file name it systemdiskinfo
+vi systemdiskinfo file and remove the first and second line and save the file
+Run dmesg command and output to dm-file 
+vi dm-file and remove the last 5-7 lines
+Add text in the end of file dm-file using vi.  Text = This is the end of the file.  Then save the file
+Reboot the system using init command
