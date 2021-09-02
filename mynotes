@@ -1,0 +1,479 @@
+My notes :
+
+File system Structure and commands
+
+•	Changing password : passwd userid
+•	Linux file system is just like windows file system however the root / is the first directory of Hard disk and just like in windows it’s the C 
+The subfolders in C which are predefined when you install the OS, similar to that Linux also have predefined folders /etc    /home    /bin 
+This commands below will show you the home directory and its contents 
+1.	Cd /
+2.	Ls -l 
+/Bin 	Directory that have all the linux commands
+/boot	Contains file that are not used by linux OS but used only by the bootloader
+/etc 	Any configuration changes ,additional Programs and data files 
+/mnt 	Is used for mounting network shared file system such as NFS CIFS and Samba
+/opt	Optional addon applications  
+/root	Root home directory not same as /
+/sbin	System binaries
+/proc	Running processes
+/tem	Temporary directory
+/home 	User directories
+/var	Directory for system logs
+/run	Companion directory for /var/run
+/dev	Contains refereneces to all the peripheral hardware
+/media	cdrom
+
+•	Navigating File system 
+Cd	Change directory
+Pwd	Present working directory 
+Ls	List
+cd..	One step back
+Su - 	Root user
+Touch file name
+Cp target file name new name
+vi 	
+Creating /copy files
+Mkdir	Make directory 
+
+Mv	Move 
+Ls – ltr	List items in the order they are created
+find
+
+
+
+locate	Find . -name “file name or any key term you searching for “
+Example : find / .name “ifcfgenp0s3”
+ 
+locate filename
+
+
+•	Wildcards 
+A wildcard is a character that can be  used as a substitute for any of the class of  characters in search
+•	* (star or astring) is used to represent 0 or more characters
+•	? represents single charaacter
+•	[] can be used to create a grup of files 
+•	\ (backslash) as an escape character 
+•	^(carat) beginging of the line 
+•	$ (Dollar ) end of the line 
+
+
+Examples of usage of wildcards
+
+1.	If you want to create multiple files at the same time in a pattern 
+Like example : abcd1-xyz ,abcd2-xyz ,abcd3-xyz etc upto like 10 or 20 or 1000 then you need to use
+Command : touch filename{ inside curly braces start number dotdot..end number } like below :
+touch abcd{1..9}-xyz
+
+2.	now suppose you want to remove the files you created and you know the pattern or names of the files you have created which are saved in different locations , now you cannot go to all directories and delete all by searching each folder or directory instead 
+                            rm abcd*  or u can also type  rm *xyz
+so now the * will search all the files in all directories with filenames starting from abcd or ending with xyz and then they will be deleted.
+3.	For ? 
+ls-l  ?bcd*
+will list the files which have bcd in it
+4.	For []    
+ls -l *[cd]*
+will list all the filed which will have cd in it no matter what the before and after letters are
+
+
+
+
+
+
+
+
+
+
+Linux Administration 
+
+•	Pipe command (|) it connects two commands 
+Example : command1 arguments | command2 arguments
+		ls-l |more 
+more command shows one page at a time in list of pages
+		ls-l |tail -l
+tail will show the last line of the page 
+
+•	File permissions 
+There are three permissions in the 
+ r is read
+ wis write 
+x is execute
+
+•	the permissions are given to following categories 
+user 
+group 
+other   
+
+•	now if you see the file name in the linux like -rwxrwxrwx
+first bit – represents what type of file is this If its -rwxrwxrwx  it can directory(starts with D) link (starts with L) or regular file (starts with -).
+Next three bits rwx in -rwxrwxrwx that the user permissions in this is read write execute 
+Next three bits rwx in -rwxrwxrwx that the group  permissions in this is read write execute 
+Next three bits rwx in -rwxrwxrwx that the other permissions in this is read write execute 
+
+•	change mode –
+command -chmod 
+like if you want to remove the group permissions of a file to read and write only then 
+
+chmod g-x filename 
+this above command will change group permissions modification to -rwxrw-rwx
+
+now suppose you want to change the other permissions to read and write only then 
+chmod a-x filename
+this above commnd will change other to all permissions modification to -rwxrw-rw-
+
+chmod can not only remove but also give the permissions 
+
+now suppose you want to give the other permissions to read write and execute then 
+chmod a+x filename
+this above commnd will change other to all permissions modification to -rwxrw-rwx
+
+•	chown and chgrp
+
+chown command is used to change the ownership of the file in user column 
+chgrp changes the ownership of the file in group section 
+
+like example
+vagrant@vagrant-ubuntu-trusty-64:~$ ls -ltr
+total 4
+-rw-rw-r-- 1 vagrant vagrant    0 Aug 28 14:05 second                                                                                         Note : ( vagrant in red is user vagrant in blue is group)
+-rw-rw-r-- 1 vagrant vagrant    0 Aug 28 14:05 first
+drwxrwxr-x 2 vagrant vagrant 4096 Aug 28 15:46 FDire
+root@vagrant-ubuntu-trusty-64:~$ chown root FDire
+drwxrwxr-x 2 root vagrant 4096 Aug 28 15:46 FDire
+vagrant@vagrant-ubuntu-trusty-64:~$ chgrp root FDire
+drwxrwxr-x 2 root root 4096 Aug 28 15:46 FDire
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+HELP commands 
+
+•	whatis command
+•	man command
+•	commnd –help
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Adding Text to files 
+
+Three ways to type the text to files
+	Vi 
+	Redirects :  > (write ) and >>(append)
+	Echo
+And additional cat command
+
+Examples :
+
+	> command &  >> command 
+vagrant@vagrant-ubuntu-trusty-64:~$ ls
+FDire  first  second
+vagrant@vagrant-ubuntu-trusty-64:~$ echo you have the first statement
+you have the first statement
+vagrant@vagrant-ubuntu-trusty-64:~$ echo you have the first statement > First
+vagrant@vagrant-ubuntu-trusty-64:~$ cat First
+you have the first statement
+vagrant@vagrant-ubuntu-trusty-64:~$ echo you have the second statement >> First
+vagrant@vagrant-ubuntu-trusty-64:~$ cat First
+you have the first statement
+you have the second statement
+
+
+
+
+	Command   > will erase everything and write fresh 
+Where as >> will add or append to existing 
+
+vagrant@vagrant-ubuntu-trusty-64:~$ ls -l
+total 8
+drwxrwxr-x 2 vagrant vagrant 4096 Aug 28 15:46 FDire
+-rw-rw-r-- 1 vagrant vagrant    0 Aug 28 14:05 first
+-rw-rw-r-- 1 vagrant vagrant   59 Aug 28 16:38 First
+-rw-rw-r-- 1 vagrant vagrant    0 Aug 28 14:05 second
+vagrant@vagrant-ubuntu-trusty-64:~$
+vagrant@vagrant-ubuntu-trusty-64:~$ echo now this will erase existing and you will see this statement only > First
+vagrant@vagrant-ubuntu-trusty-64:~$ cat First
+now this will erase existing and you will see this statement only
+vagrant@vagrant-ubuntu-trusty-64:~$
+
+
+FILE Maintenance commands
+
+Cp                  this copies the file 
+                       Example :
+  vagrant@vagrant-ubuntu-trusty-64:~$ cp First first
+vagrant@vagrant-ubuntu-trusty-64:~$ cat First
+now this will erase existing and you will see this statement only
+vagrant@vagrant-ubuntu-trusty-64:~$ cat first
+now this will erase existing and you will see this statement only
+vagrant@vagrant-ubuntu-trusty-64:~$
+Mv                 this moves the file
+Example:
+vagrant@vagrant-ubuntu-trusty-64:~$ mv second FDire
+vagrant@vagrant-ubuntu-trusty-64:~$ pwd
+/home/vagrant
+vagrant@vagrant-ubuntu-trusty-64:~$ ls
+FDire  first  First
+vagrant@vagrant-ubuntu-trusty-64:~$ cd FDire
+vagrant@vagrant-ubuntu-trusty-64:~/FDire$ ls
+second
+vagrant@vagrant-ubuntu-trusty-64:~/FDire$
+Rm : remove the file
+vagrant@vagrant-ubuntu-trusty-64:~/FDire$ rm second
+vagrant@vagrant-ubuntu-trusty-64:~/FDire$ ls
+vagrant@vagrant-ubuntu-trusty-64:~/FDire$ pwd
+/home/vagrant/FDire
+vagrant@vagrant-ubuntu-trusty-64:~/FDire$ ls
+vagrant@vagrant-ubuntu-trusty-64:~/FDire$
+Mkdir : it created the directory 
+
+vagrant@vagrant-ubuntu-trusty-64:~$ mkdir funwork
+vagrant@vagrant-ubuntu-trusty-64:~$ cd funwork
+vagrant@vagrant-ubuntu-trusty-64:~/funwork$ touch F{1..5}abc
+vagrant@vagrant-ubuntu-trusty-64:~/funwork$ ls
+F1abc  F2abc  F3abc  F4abc  F5abc
+Rmdir or rm – r     removes the directory  and rm – r removes all the files as well inside the directory completely rm – r (r stands for recursive delete)
+vagrant@vagrant-ubuntu-trusty-64:~/FDire$ cd
+vagrant@vagrant-ubuntu-trusty-64:~$ rmdir FDire
+vagrant@vagrant-ubuntu-trusty-64:~$ ls
+first  First
+vagrant@vagrant-ubuntu-trusty-64:~$
+
+rm – r 
+vagrant@vagrant-ubuntu-trusty-64:~$ mkdir funwork
+vagrant@vagrant-ubuntu-trusty-64:~$ cd funwork
+vagrant@vagrant-ubuntu-trusty-64:~/funwork$ touch F{1..5}abc
+vagrant@vagrant-ubuntu-trusty-64:~/funwork$ ls
+F1abc  F2abc  F3abc  F4abc  F5abc
+vagrant@vagrant-ubuntu-trusty-64:~/funwork$ cd ..
+vagrant@vagrant-ubuntu-trusty-64:~$ ls
+first  First  funwork
+vagrant@vagrant-ubuntu-trusty-64:~$ rmdir funwork
+rmdir: failed to remove ‘funwork’: Directory not empty   (#since it has files !!!)
+vagrant@vagrant-ubuntu-trusty-64:~$
+
+vagrant@vagrant-ubuntu-trusty-64:~$
+vagrant@vagrant-ubuntu-trusty-64:~$ rm -r funwork
+vagrant@vagrant-ubuntu-trusty-64:~$ ls
+first  First
+vagrant@vagrant-ubuntu-trusty-64:~$
+Chgrp  
+Chown	
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+File Display Commands
+•	cat                                                            It displyes everything in one shot 
+•	more                                                        Page by page from top
+•	less                                                           page by page from bottom
+•	head                                                        top most lines  ex: head -2 filename         
+•	tail                                                           Bottom most lines of file ex: tail -2 filename         
+
+
+
+
+
+
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Filter or Text processor commands
+Cut	vagrant@vagrant-ubuntu-trusty-64:~/Dexter$ cut -c1-5 powerpuff
+profe
+profe
+bloss
+butte
+vagrant@vagrant-ubuntu-trusty-64:~/Dexter$
+	Cut prints the word you define
+like here cut -c1-5 powerpuff
+It has cut the 1 to 5 words from powerpuff file 
+Awk	Awk ‘{print $1}’
+
+vagrant@vagrant-ubuntu-trusty-64:~/Dexter$ awk print1 powerpuff
+vagrant@vagrant-ubuntu-trusty-64:~/Dexter$ cat powerpuff | awk '{print$1}'
+professor
+professor
+blossam
+butter
+vagrant@vagrant-ubuntu-trusty-64:~/Dexter$ cat powerpuff | awk '{print$4}'
+buttercup	Awk prints the column
+Grep	vagrant@vagrant-ubuntu-trusty-64:~/Dexter$ cat powerpuff
+professor blossom bubbles buttercup mojo jojo teacher mayor
+professor
+blossam
+butter cup
+vagrant@vagrant-ubuntu-trusty-64:~/Dexter$ grep professor powerpuff
+professor blossom bubbles buttercup mojo jojo teacher mayor
+professor
+vagrant@vagrant-ubuntu-trusty-64:~/Dexter$ ^C
+vagrant@vagrant-ubuntu-trusty-64:~/Dexter$
+	Grep helps to finds the particular  words in the file
+Sort	vagrant@vagrant-ubuntu-trusty-64:~/Dexter$ sort powerpuff
+blossam
+butter cup
+professor
+professor blossom bubbles buttercup mojo jojo teacher mayor
+vagrant@vagrant-ubuntu-trusty-64:~/Dexter$
+	It arranges in alphabetical orders
+
+Sort -r arranges in alphabetical but reverse order 
+Uniq	It counts the uniq 	
+wc	vagrant@vagrant-ubuntu-trusty-64:~/Dexter$ wc powerpuff
+ 4 12 89 powerpuff
+	4 lines
+12 words 
+89 characters
+		
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+•	Comparison commands 
+
+diff and cmp 
+diff do it line by line 
+cmp do it byte by byte 
+
+Commands : diff filename filename
+	         Cmp filename filename
+
+•	Compress and un compress Files 
+               
+Tar 
+gzip
+gzip -d or gunzip
+
+
+	
+•	Text Editor in Linux helps you to create and manipulate data in files(Text)
+o	Vi : visual editor 
+o	Ed: standard line editor
+o	Ex :extended line editor
+o	Emacs : A full screen editor 
+o	Pico :beginner’s editor
+o	Vim: Advance version of vi
+==========================================================================================
+o	Introduction to Vi editor 
+1.	Vi supplies :
+2.	Inserting and deleting the text
+3.	Replacing the text 
+4.	Moving around the file 
+5.	Finding and substituting strings 
+6.	Cutting and pasting text
+Comman Keys 
+Key i – insert
+Key esc – escape out of any mode
+Key r  - replace 
+Key d – delete 
+:q! – quit without saving 
+:wq! – quit and save 
+Shift key + key z +key z – save the file and then key q
+
+Modes 
+
+o	First you enter in command mode then when you press key -I it enters to insert mode
+
+Vi examples :
+vagrant@vagrant-ubuntu-trusty-64:/vagrant$ cd Documents
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents$ ls
+My Music  My Pictures  My Videos
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents$ mkdir gayatri
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents$ ls
+gayatri  My Music  My Pictures  My Videos
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents$ cd gayatri
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents/gayatri$ touch myfirstedit
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents/gayatri$ vi myfirsteditt
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents/gayatri$ cat myfirsteditt
+Hello i am happy to learn Linux and i know this will be huge learning as i want to work in security and it will enhance my capabilities to do the work efficently.
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents/gayatri$ grep learning myfirsteditt
+Hello i am happy to learn Linux and i know this will be huge learning as i want to work in security and it will enhance my capabilities to do the work efficently.
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents/gayatri$
+
+
+o	if you want to delete then you have to switch in to command mode and hit the key x it will delete one by one 
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents/gayatri$ vi myfirsteditt
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents/gayatri$ echo myfirsteditt
+myfirsteditt
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents/gayatri$ cat myfirsteditt
+Hello i am excited to learn Linux and i know this will be huge learning as i want to work in security and it will enhance my capabilities to do the work efficently.
+this is the second line i am going to delete
+this is the third line i am going to replace.
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents/gayatri$ vi myfirstedit
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents/gayatri$ vi my firsteditt
+2 files to edit
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents/gayatri$ vi myfirsteditt
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents/gayatri$ vi myfirsteditt
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents/gayatri$ cat myfirsteditt
+Hello i am excited to learn Linux and i know this will be huge learning as i want to work in security and it will enhance my capabilities to do the work efficently.
+this is the third line i am going to replace.
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents/gayatri$ echo as you can see the second line in VI editor file -myfirsteditt is deleted by keyd twice and to save you can enter :wq! or shift key + keyz +key z
+as you can see the second line in VI editor file -myfirsteditt is deleted by keyd twice and to save you can enter :wq! or shift key + keyz +key z
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents/gayatri$
+
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents/gayatri$ vi myfirsteditt
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents/gayatri$ cat myfirsteditt
+Hello i am excited to learn Linux and i know this will be huge learning as i want to work in security and it will enhance my capabilities to do the work efficently.
+replaced by first deleting it( d twice ) and then entering insert mode and typed this.
+if you want to replace letter by letter then hit r and then enter that letter
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/Documents/gayatri$
+
+
+
+
+
+User Account Management 
+
+Commands:
+o	Useradd:
+root@vagrant-ubuntu-trusty-64:~# useradd krishna
+root@vagrant-ubuntu-trusty-64:~# id krishhna
+id: krishhna: no such user
+root@vagrant-ubuntu-trusty-64:~# id krishna
+uid=1002(krishna) gid=1002(krishna) groups=1002(krishna)
+
+o	Groupadd 
+root@vagrant-ubuntu-trusty-64:/home/ubuntu# id krishna
+uid=1002(krishna) gid=1002(krishna) groups=1002(krishna)
+root@vagrant-ubuntu-trusty-64:/home/ubuntu# groupadd almighty
+root@vagrant-ubuntu-trusty-64:/home/ubuntu# cat /etc/group
+
+krishna:x:1002:
+spi:x:1003:
+almighty:x:1004:
+root@vagrant-ubuntu-trusty-64:/home/ubuntu#
+
+Userdel :
+root@vagrant-ubuntu-trusty-64:/home/ubuntu# userdel spi
+root@vagrant-ubuntu-trusty-64:/home/ubuntu# id spi
+id: spi: no such user
+root@vagrant-ubuntu-trusty-64:/home/ubuntu#
+
+Groupdel
+Usermod :
+root@vagrant-ubuntu-trusty-64:/home# usermod -G almighty krishna
+root@vagrant-ubuntu-trusty-64:/home# id krishna
+uid=1002(krishna) gid=1002(krishna) groups=1002(krishna),1004(almighty)
+
+
+
+
+
+SWITCH users and sudo access
+
+In order to switch user 
+>> su – username
+>> sudo command 
+>> visudo
+
+File : /etc/sudoers	
+
+Ctrl + X is exit out of vieditor
+
+
+
+
+Monitor users 
+
+who command shows who all are presently logged in to the system
